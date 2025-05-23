@@ -1,5 +1,4 @@
 import styles from "../styles/ChoiseGame.module.css";
-import Tooltip from "../components/Tooltip";
 import Link from "next/link";
 
 const gamesList = [
@@ -36,7 +35,7 @@ const gamesList = [
 ];
 
 const oneGame = (
-  <div className={styles.container}>
+  <div className={styles.containerGame}>
     {gamesList.map((game) => {
       return (
         <Link href="papayoo">
@@ -57,7 +56,19 @@ const oneGame = (
 
 function ChoiseGame() {
   return (
-    <div>
+    <div className={styles.container}>
+      <div className={styles.imageContainer}>
+        <img
+          src="/images/Uno.jpg"
+          alt="amis qui joue aux cartes"
+          className={styles.image}
+        />
+        <img
+          src="/logo_TCMP.png"
+          alt="logo tu comptes mes points"
+          className={styles.logo}
+        />
+      </div>
       <main className={styles.main}>
         <h2>On joue à quoi ?</h2>
         {oneGame}

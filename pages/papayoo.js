@@ -1,7 +1,8 @@
-import PapayooPlayers from "../components/Papayoo";
+import PapayooPlayers from "../components/Papayoo/PapayooPlayer";
+import TableauScore from "../components/Papayoo/PapayooTableauScore";
 
 function PapayooGame() {
-  return <PapayooPlayers />;
+  return <TableauScore />;
 }
 
 export default PapayooGame;

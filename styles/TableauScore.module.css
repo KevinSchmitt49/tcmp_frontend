@@ -30,7 +30,6 @@
     align-items: center;
     padding-top: 32px;
     overflow-y: scroll;
-
 }
 
 .cardGame {
@@ -60,84 +59,35 @@
   transform: translate(-50%, -50%);
 
 }
-
-.input {
-  width: 90%;
-  /* height: 50px; */
-  padding: 10px;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  border: 3px solid transparent;
-  border-radius: 10px;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  background-image:
-    linear-gradient(white, white), /* fond du champ */
-    linear-gradient(305deg,rgba(21, 207, 170, 1) 20%, rgba(75, 103, 242, 1) 100%);
-  transition: all 0.3s ease;
-}
-.input::placeholder {
-  opacity: 50%;
-  font-weight: 100;
-}
-.input:focus-visible {
-  outline: none;
-}
-
-
-.input:not(:focus) {
-  background-image: none;
-
-}
-.containerButton{
+.containerButton {
+    padding-bottom: 32px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap : 50px ;
-    margin-top: 20px;
-}
-.buttonAdd {
-    background: #15cfaa;
-    background: var(--btn-gradient);
-    width: 60px;
-    height: 60px;
-    display: flex;      
-    align-items: flex-end; 
-    justify-content: center; 
-    /* padding:0px 0 20px; */
-    vertical-align: -5px;
-    border: 3px solid white;
-    border-radius: 10px;
-    font-family: "Inter";
-    font-size: 3rem;
-    font-weight: 600;
-    color: white;
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    flex-direction: column;
 
 }
-.buttonAdd:hover {
-    background: var(--btn-gradient2);
+
+.containerTable {
+    width: 100%;
+    height: 700px;
+    border: 1px solid white;
+    overflow-y:scroll ;
 }
-.buttonDelete {
+
+
+.secondaryButton {
     border: none;
     position: relative;
-    width: 60px;
-    height: 60px;
-    display: flex;      
-    align-items: flex-end; 
-    justify-content: center;
-    padding-bottom: 3px; 
-    border-radius: 10px;
+    padding: 10px 23px;
+    border-radius: 50px;
     font-family: "Inter";
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: 600;
     background: white;
     z-index: 0;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
 }
 
-.buttonDelete::before {
+.secondaryButton::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -151,7 +101,7 @@
     mask-composite: exclude;
     z-index: -1;
 }
-.buttonDelete:hover::before {
+.secondaryButton:hover::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -174,12 +124,12 @@
 }
 
 .principalButton {
-    position: fixed;
-    bottom: 32px;
-    width: 60%;
+    /* position: fixed; */
+    /* bottom: 32px; */
+    /* width: 60%; */
     background: #15cfaa;
     background: var(--btn-gradient);
-    padding: 20px 30px;
+    padding: 8px 23px;
     border: 3px solid white;
     border-radius: 50px;
     font-family: "Inter";
@@ -236,7 +186,7 @@
         display: block; 
 }
 .principalButton {
-    width: 60%;
+    /* width: 60%; */
     position:static;
     margin-top: 32px;
 }

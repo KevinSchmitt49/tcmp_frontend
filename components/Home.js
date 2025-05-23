@@ -1,12 +1,18 @@
-import styles from '../styles/Home.module.css';
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 function Home() {
   return (
     <div>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <img
+          src="/logo_TCMP.png"
+          alt="logo tu comptes mes points"
+          className={styles.logoPrincipal}
+        />
+        <Link href="/game">
+          <button className={styles.principalButton}>Commencer !</button>
+        </Link>
       </main>
     </div>
   );

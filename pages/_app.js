@@ -1,11 +1,11 @@
-import '../styles/globals.css';
-import Head from 'next/head';
+import "../styles/globals.css";
+import Head from "next/head";
 
 function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Next.js App</title>
+        <title>Tu comptes mes points</title>
       </Head>
       <Component {...pageProps} />
     </>

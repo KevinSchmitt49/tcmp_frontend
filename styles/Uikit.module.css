@@ -1,0 +1,121 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.principalButton {
+    background: #15cfaa;
+    background: var(--btn-gradient);
+    padding: 20px 30px;
+    border: 3px solid white;
+    border-radius: 50px;
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+
+}
+.principalButton:hover {
+    background: var(--btn-gradient2);
+}
+
+.secondaryButton {
+    border: none;
+    position: relative;
+    padding: 23px;
+    border-radius: 50px;
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: white;
+    z-index: 0;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+}
+
+.secondaryButton::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    background: var(--btn-gradient);
+    border-radius: inherit;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}
+.secondaryButton:hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    background: var(--btn-gradient2);
+    border-radius: inherit;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+.gradiantText {
+    background: var(--btn-gradient);
+    -webkit-background-clip: text;
+     background-clip: text;
+    color: transparent;
+}
+
+.cardGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 200px;
+    border-radius: 10px;
+    border: 3px solid white;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    background-image: url("../public/images/Uno.jpg");
+    background-size: cover;      /* adapte l’image à la taille de la div */
+    background-position: center; /* centre l’image */
+    background-repeat: no-repeat;
+    margin: 10px;
+}
+
+.disable{
+    opacity: 50%;
+    filter: grayscale(100%); 
+}
+
+.input {
+  width: 30%;
+  /* height: 50px; */
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient(white, white), /* fond du champ */
+    linear-gradient(305deg,rgba(21, 207, 170, 1) 20%, rgba(75, 103, 242, 1) 100%);
+  transition: all 0.3s ease;
+}
+.input::placeholder {
+  opacity: 50%;
+  font-weight: 100;
+}
+.input:focus-visible {
+  outline: none;
+}
+
+.input:not(:focus) {
+  background-image: none;
+
+}

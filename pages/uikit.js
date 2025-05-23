@@ -1,7 +1,8 @@
 import Home from "../components/Home";
+import Uikit from "../components/Uikit";
 
 function Index() {
-  return <Home />;
+  return <Uikit />;
 }
 
 export default Index;

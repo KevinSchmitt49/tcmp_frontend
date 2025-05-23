@@ -1,0 +1,41 @@
+.tooltipWrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltipText {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  max-width: 200px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 120%; /* au-dessus de l’élément */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+/* Petite flèche */
+.tooltipText::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* en bas de la tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltipWrapper:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
+}

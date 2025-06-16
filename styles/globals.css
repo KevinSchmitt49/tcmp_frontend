@@ -36,6 +36,7 @@ main {
 
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     padding: 0px 16px 32px;
 }
 

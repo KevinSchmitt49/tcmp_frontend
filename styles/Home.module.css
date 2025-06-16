@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    height: 100dvh;
 }
 .imageContainer {
     width: 50vw;

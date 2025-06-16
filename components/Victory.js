@@ -12,8 +12,6 @@ function Victory() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!gameId);
-
     async function fetchScores() {
       const { data, error } = await supabase
         .from("scores")
@@ -25,10 +23,11 @@ function Victory() {
         console.error("Erreur récupération des scores :", error);
         return;
       }
+      const validData = data.filter((row) => row.players !== null);
 
       const totals = {};
-      console.log(data);
-      for (const row of data) {
+      console.log(validData);
+      for (const row of validData) {
         const playerId = row.player_id;
         if (!totals[playerId]) {
           totals[playerId] = {
@@ -78,53 +77,53 @@ function Victory() {
     // logique pour recommencer une partie...
   };
 
-  if (loading) return <p className={styles.loading}>Chargement...</p>;
-
   console.log(ranking);
 
   const rankingFourAndMore = ranking.slice(3);
 
-  const handleclick = () => {};
+  if (loading) return <p>Chargement...</p>;
 
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <div className={styles.textContainer}>
-          <p>Bravo</p>
-          <p>{ranking[0].name}</p>
-          <p>t'es un(e) champion(ne) !</p>
-          <p> ({ranking[0].total} points)</p>
-        </div>
-        {ranking.length < 3 ? (
-          ""
-        ) : (
-          <div className={styles.podium}>
-            <div className={styles.oneTwoThree}>
-              <img src="/images/podium2.png" className={styles.image} />
-              <div className={styles.second}>{ranking[1].name}</div>
-              <div className={styles.third}>{ranking[2].name}</div>
-              <img src="/images/light.png" className={styles.light} />
-            </div>
-            <div className={styles.tableau}>
-              <ol start="4">
-                {rankingFourAndMore.map((joueur, index) => (
-                  <li key={index}>
-                    {joueur.name} – {joueur.total} points
-                  </li>
-                ))}
-              </ol>
-            </div>
+      {ranking.length > 0 && (
+        <main className={styles.main}>
+          <div className={styles.textContainer}>
+            <p>Bravo</p>
+            <p>{ranking[0].name}</p>
+            <p>t'es un(e) champion(ne) !</p>
+            <p> ({ranking[0].total} points)</p>
           </div>
-        )}
-        <Link href="/">
-          <button
-            className={styles.principalButton}
-            onClick={handleRestartGame}
-          >
-            <span>Recommencer une partie</span>
-          </button>
-        </Link>
-      </main>
+          {ranking.length < 3 ? (
+            ""
+          ) : (
+            <div className={styles.podium}>
+              <div className={styles.oneTwoThree}>
+                <img src="/images/podium2.png" className={styles.image} />
+                <div className={styles.second}>{ranking[1].name}</div>
+                <div className={styles.third}>{ranking[2].name}</div>
+                <img src="/images/light.png" className={styles.light} />
+              </div>
+              <div className={styles.tableau}>
+                <ol start="4">
+                  {rankingFourAndMore.map((joueur, index) => (
+                    <li key={index}>
+                      {joueur.name} – {joueur.total} points
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          )}
+          <Link href="/">
+            <button
+              className={styles.principalButton}
+              onClick={handleRestartGame}
+            >
+              <span>Recommencer une partie</span>
+            </button>
+          </Link>
+        </main>
+      )}
     </div>
   );
 }

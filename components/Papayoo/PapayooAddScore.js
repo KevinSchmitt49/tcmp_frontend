@@ -125,10 +125,7 @@ function AddScore({ gameId, onClose, onSubmitSuccess }) {
       <main className={styles.main}>
         <h2 className={styles.h2}>Alors t'as combien ?</h2>
         {scoreInput}
-        <p
-          className={styles.remaining}
-          // style={{ fontSize: remaining < 0 ? "2rem" : "inherit" }}
-        >
+        <p className={styles.remaining}>
           Il reste {remaining} points à distribuer.
         </p>
         <p

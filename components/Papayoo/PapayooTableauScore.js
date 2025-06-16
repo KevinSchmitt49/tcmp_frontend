@@ -75,9 +75,9 @@ function TableauScore({ gameId }) {
       }
 
       let formatted = formatScores(scoresData ?? []);
-      console.log("resultat du formated", formatted);
-      console.log("resultat du playerdata", playersData);
-      console.log("resultat du gameID", gameId);
+      // console.log("resultat du formated", formatted);
+      // console.log("resultat du playerdata", playersData);
+      // console.log("resultat du gameID", gameId);
 
       setTableData(formatted);
       const totalPoints = calculateTotals(

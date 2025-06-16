@@ -1,7 +1,5 @@
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import { supabase } from "../lib/supabaseClient";
-import { useEffect } from "react";
 
 function Home() {
   return (

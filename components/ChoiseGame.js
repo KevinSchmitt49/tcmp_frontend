@@ -8,6 +8,7 @@ function ChoiseGame() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const router = useRouter();
   // Chargement des données au montage du composant
   useEffect(() => {
     async function getGamesList() {
@@ -25,9 +26,7 @@ function ChoiseGame() {
 
   if (loading) return <p className={styles.loading}>Chargement...</p>;
 
-  console.log(games);
-
-  const router = useRouter();
+  // console.log(games);
 
   async function postNewGame(nomPartie) {
     const { data, error } = await supabase
@@ -38,7 +37,7 @@ function ChoiseGame() {
     if (error) {
       console.error("Erreur à l'insertion :", error);
     } else {
-      console.log("Partie ajoutée :", data);
+      // console.log("Partie ajoutée :", data);
       const gameId = data[0].id;
       router.push(`/papayoo?game_id=${gameId}`);
     }
@@ -48,10 +47,9 @@ function ChoiseGame() {
     <div className={styles.containerGame}>
       {games.map((game) => {
         return (
-          <Link href={game.name.toLowerCase()}>
+          <Link href={game.name.toLowerCase()} key={game.id}>
             <button
               onClick={() => postNewGame(game.name)}
-              key={game.id}
               disabled={!game.enable}
               className={`${styles.cardGame} ${
                 game.enable ? "" : styles.disable

@@ -66,7 +66,7 @@ function PapayooPlayers({ onGo }) {
     if (error) {
       console.error("Erreur d'insertion :", error);
     } else {
-      console.log("Joueurs enregistrés :", data);
+      console.log("Joueurs enregistrés :" /*, data*/);
       // redirection ou confirmation ici si besoin
     }
     if (!error) {

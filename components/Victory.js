@@ -26,7 +26,7 @@ function Victory() {
       const validData = data.filter((row) => row.players !== null);
 
       const totals = {};
-      console.log(validData);
+      //   console.log(validData);
       for (const row of validData) {
         const playerId = row.player_id;
         if (!totals[playerId]) {
@@ -77,7 +77,7 @@ function Victory() {
     // logique pour recommencer une partie...
   };
 
-  console.log(ranking);
+  //   console.log(ranking);
 
   const rankingFourAndMore = ranking.slice(3);
 

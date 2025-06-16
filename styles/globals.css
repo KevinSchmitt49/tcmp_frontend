@@ -39,3 +39,11 @@ main {
     padding: 0px 16px 32px;
 }
 
+a {
+  color: white;
+}
+
+ol {
+      padding-inline-start: 0px;
+      font-style: italic;
+}

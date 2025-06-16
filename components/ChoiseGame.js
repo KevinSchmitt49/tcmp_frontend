@@ -1,60 +1,70 @@
 import styles from "../styles/ChoiseGame.module.css";
 import Link from "next/link";
-
-const gamesList = [
-  {
-    id: 1,
-    name: "Papayoo",
-    src: "images/papayoo.jpg",
-    disable: false,
-  },
-  {
-    id: 2,
-    name: "Uno",
-    src: "images/Uno.jpg",
-    disable: true,
-  },
-  {
-    id: 3,
-    name: "Belote",
-    src: "images/belote.jpg",
-    disable: true,
-  },
-  {
-    id: 4,
-    name: "Tarot",
-    src: "images/tarot.jpg",
-    disable: true,
-  },
-  {
-    id: 5,
-    name: "Dos",
-    src: "images/dos.jpg",
-    disable: true,
-  },
-];
-
-const oneGame = (
-  <div className={styles.containerGame}>
-    {gamesList.map((game) => {
-      return (
-        <Link href="papayoo">
-          <button
-            key={game.id}
-            className={`${styles.cardGame} ${
-              game.disable ? styles.disable : ""
-            }`}
-          >
-            <img className={styles.imgGame} src={game.src} />
-            <h3 className={styles.text}> {game.name} </h3>
-          </button>
-        </Link>
-      );
-    })}
-  </div>
-);
+import { supabase } from "../lib/supabaseClient";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 function ChoiseGame() {
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Chargement des données au montage du composant
+  useEffect(() => {
+    async function getGamesList() {
+      const { data, error } = await supabase.from("games-list").select("*");
+      if (error) {
+        console.error("Erreur Supabase :", error);
+      } else {
+        setGames(data);
+      }
+      setLoading(false);
+    }
+
+    getGamesList();
+  }, []);
+
+  if (loading) return <p className={styles.loading}>Chargement...</p>;
+
+  console.log(games);
+
+  const router = useRouter();
+
+  async function postNewGame(nomPartie) {
+    const { data, error } = await supabase
+      .from("games")
+      .insert([{ name: nomPartie }])
+      .select(); // retourne les données insérées
+
+    if (error) {
+      console.error("Erreur à l'insertion :", error);
+    } else {
+      console.log("Partie ajoutée :", data);
+      const gameId = data[0].id;
+      router.push(`/papayoo?game_id=${gameId}`);
+    }
+  }
+
+  const game = (
+    <div className={styles.containerGame}>
+      {games.map((game) => {
+        return (
+          <Link href={game.name.toLowerCase()}>
+            <button
+              onClick={() => postNewGame(game.name)}
+              key={game.id}
+              disabled={!game.enable}
+              className={`${styles.cardGame} ${
+                game.enable ? "" : styles.disable
+              }`}
+            >
+              <img className={styles.imgGame} src={game.src} />
+              <h3 className={styles.text}> {game.name} </h3>
+            </button>
+          </Link>
+        );
+      })}
+    </div>
+  );
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
@@ -71,7 +81,7 @@ function ChoiseGame() {
       </div>
       <main className={styles.main}>
         <h2>On joue à quoi ?</h2>
-        {oneGame}
+        {game}
       </main>
     </div>
   );

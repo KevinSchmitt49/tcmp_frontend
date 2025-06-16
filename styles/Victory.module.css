@@ -1,0 +1,131 @@
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    /* background: no-repeat url("../public/images/podium.png");
+    background-position: 50% 0% ;
+    background-size: contain; */
+    
+}
+
+.main {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.image {
+    width: 90%;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+.podium {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.oneTwoThree {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.second {
+    font-size: 1.5rem;
+    position: relative;
+    top:-48%;
+    left:-20%;
+    transform: translateX(-50%);
+}
+.third {
+    font-size: 1.5rem;
+    position: relative;
+    top:-52%;
+    right:-32%;
+     transform: translateX(-50%);
+}
+.light {
+    position: absolute;
+    z-index: -1;
+    top:0;
+    width: 90%;
+    height: 70%;
+}
+
+.tableau {
+    margin-top: -50px;
+}
+
+.textContainer {
+    text-align: center;
+    padding-top: 20%;
+}
+.textContainer p {
+    margin: 0;
+}
+
+.textContainer > *:first-child {
+  font-size: 2rem;
+  font-style: italic;
+}
+.textContainer > *:nth-child(2) {
+    font-size: 3rem;
+    font-weight: 700;
+}
+.textContainer > *:nth-child(3) {
+    font-size: 1.5rem;
+    font-weight: 200;
+    font-style: italic;
+}
+.textContainer > *:last-child {
+    font-size: 1.2rem;
+    font-weight: 200;
+    font-style: italic;
+}
+.principalButton {
+    /* position: fixed; */
+    /* bottom: 32px; */
+    /* width: 60%; */
+    background: #15cfaa;
+    background: var(--btn-gradient);
+    padding: 8px 23px;
+    border: 3px solid white;
+    border-radius: 50px;
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+
+}
+.principalButton:hover {
+    background: var(--btn-gradient2);
+}
+.loading {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (orientation:landscape) {
+    .main{
+        max-height: 100%;
+        width: 50% ;
+    }
+    .light {
+    width: 50%;
+    height: 70%;
+}
+.textContainer {
+    text-align: center;
+    padding-top: 32px;
+}
+}

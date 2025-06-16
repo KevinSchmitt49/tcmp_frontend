@@ -4,19 +4,6 @@ import { supabase } from "../lib/supabaseClient";
 import { useEffect } from "react";
 
 function Home() {
-  // ---------------test connection Base de donnée supabase ---------------
-  // useEffect(() => {
-  //   const testDB = async () => {
-  //     const { data, error } = await supabase.from("score").select("*");
-  //     if (error) {
-  //       console.error("❌ Erreur de connexion à Supabase :", error.message);
-  //     } else {
-  //       console.log("✅ Connexion OK. Exemple de donnée :", data);
-  //     }
-  //   };
-
-  //   testDB();
-  // }, []);
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
